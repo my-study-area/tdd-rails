@@ -25,3 +25,7 @@ esperado;
 - Teardown: Quando você coloca o sistema no
 estado em que ele estava antes do teste ser
 executado.
+
+## 11. Context e .rspec
+- `rspec --format documentation` - executa os testes exibindos as descrições dos teste de forma mais completa
+- adicione `rspec --format documentation` no arquivo `.rspec` para executar somente com `rspec`
