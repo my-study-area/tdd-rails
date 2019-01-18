@@ -1,7 +1,7 @@
 require 'calculator'
 
-describe Calculator do
-subject(:calc) { described_class.new }
+describe 'Classe Calculatora' do
+subject(:calc) { Calculator.new }
 
   context '#sum' do
     it 'with positives numbers' do
