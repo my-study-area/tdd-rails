@@ -14,5 +14,14 @@ O repositório oficial do curso está disponível em [https://github.com/jackson
 - should Vs expect: [RSpec's New Expectation Syntax](http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/)
 - [Better Specs](http://www.betterspecs.org/)
 
-
-
+## 9. Teste em 4 Fases
+Um teste do padrão xUnit tem quatro fases, são elas:
+- Setup: Quando você coloca o SUT (system
+under test, o objeto sendo testado) no estado
+necessário para o teste;
+- Exercise: Quando você interage com o SUT;
+- Verify: Quando você verifica o comportamento
+esperado;
+- Teardown: Quando você coloca o sistema no
+estado em que ele estava antes do teste ser
+executado.
