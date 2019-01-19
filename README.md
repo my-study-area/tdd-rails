@@ -29,3 +29,15 @@ executado.
 ## 11. Context e .rspec
 - `rspec --format documentation` - executa os testes exibindos as descrições dos teste de forma mais completa
 - adicione `rspec --format documentation` no arquivo `.rspec` para executar somente com `rspec`
+
+## 13. It, xit, e outras coisas
+- `it 'with negative numbers'` (it sem o corpo) : executa o teste marcando como pendente
+- `xit`: executa o teste marcando como pendente
+    ```ruby
+    it 'with negative numbers' do
+      result = subject.sum(-5,7)
+      expect(result).to eq(2)
+    end
+    ```
+- `rspec -e 'with negative numbers'`: executa somente o teste com o  `it 'with negative numbers'`
+- `rspec ./spec/calculator_spec.rb:13`: executa somente o teste da linha 13
