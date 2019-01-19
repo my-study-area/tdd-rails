@@ -41,3 +41,7 @@ executado.
     ```
 - `rspec -e 'with negative numbers'`: executa somente o teste com o  `it 'with negative numbers'`
 - `rspec ./spec/calculator_spec.rb:13`: executa somente o teste da linha 13
+
+## 16. Matchers de Igualdade
+- `equal/be`: verifica se ops objetos são iguais
+- `eql/eq`: verifica se os valores são iguais
