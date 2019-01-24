@@ -45,3 +45,7 @@ executado.
 ## 16. Matchers de Igualdade
 - `equal/be`: verifica se ops objetos são iguais
 - `eql/eq`: verifica se os valores são iguais
+
+## 20. Matchers para atributos de Classes
+
+- [Listas de aliases metachers](https://gist.github.com/JunichiIto/f603d3fbfcf99b914f86)
