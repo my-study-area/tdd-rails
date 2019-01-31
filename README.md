@@ -58,3 +58,9 @@ Exemplos com divisão por zero:
 - expect{3 / 0}.to raise_error("divided by 0")
 - expect{3 / 0}.to raise_error(ZeroDivisionError, "divided by 0")
 - expect{3 / 0}.to raise_error(/divided/)
+
+## 24. Matchers para Arrays
+- expect(subject).to include(2)
+- expect(subject).to include(2,1)
+- expect(subject).to contain_exactly(3,1,2)
+- expect(subject).to match_array([2,3,1])
