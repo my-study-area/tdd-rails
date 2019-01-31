@@ -64,3 +64,13 @@ Exemplos com divisão por zero:
 - expect(subject).to include(2,1)
 - expect(subject).to contain_exactly(3,1,2)
 - expect(subject).to match_array([2,3,1])
+
+## 25. Matchers para Ranges
+```rb
+describe (1..5), 'Ranges' do
+  it '#cover' do
+    expect(subject).to cover(2)
+    expect(subject).to cover(5)
+  end
+end
+```
