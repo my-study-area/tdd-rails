@@ -49,3 +49,12 @@ executado.
 ## 20. Matchers para atributos de Classes
 
 - [Listas de aliases metachers](https://gist.github.com/JunichiIto/f603d3fbfcf99b914f86)
+
+## 22. Matchers de Erros
+Exemplos com divisão por zero:
+- expect{3 / 0}.to raise_exception # com warning
+- expect{3 / 0}.to raise_error #com warning
+- expect{3 / 0}.to raise_error(ZeroDivisionError)
+- expect{3 / 0}.to raise_error("divided by 0")
+- expect{3 / 0}.to raise_error(ZeroDivisionError, "divided by 0")
+- expect{3 / 0}.to raise_error(/divided/)
