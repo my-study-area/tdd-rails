@@ -74,3 +74,10 @@ describe (1..5), 'Ranges' do
   end
 end
 ```
+
+## 26. One-liner Syntax (Subject)
+```rb
+  it { is_expected.to cover(2) }
+  it { is_expected.to cover(2,5) }
+  it { is_expected.not_to cover(0,6) }
+```
