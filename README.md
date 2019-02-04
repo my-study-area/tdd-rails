@@ -81,3 +81,12 @@ end
   it { is_expected.to cover(2,5) }
   it { is_expected.not_to cover(0,6) }
 ```
+## 27. Composição de Expectativas
+```rb
+  it { is_expected.to start_with('Ruby').and end_with('Rails') }
+  it { expect(fruta).to eq('banana').or eq('laranja').or eq('uva')}
+
+  def fruta
+    %w(banana laranja uva).sample
+  end
+```
