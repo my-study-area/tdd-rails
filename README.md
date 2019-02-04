@@ -90,3 +90,8 @@ end
     %w(banana laranja uva).sample
   end
 ```
+## 28. Matchers para Coleções
+```rb
+  it { expect([1,5,9]).to all((be_odd).and (be_an(Integer))) }
+  it { expect(['ruby', 'rails']).to all(be_a(String).and include('r')) }
+```
