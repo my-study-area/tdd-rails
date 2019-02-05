@@ -104,5 +104,36 @@ end
 ```
 ## 30. Matcher satisfy
 ```rb
-
+  it { expect(10).to satisfy {|number| number % 2 == 0} }
+  it {
+    expect(9).to satisfy('be a multiply of 3') do |number|
+      number % 3 == 0
+    end
+  }
 ```
+## 31. Helper Methods (Arbitrários e de Módulo)
+- Helper Arbitrário:
+```rb
+describe 'Ruby on Rails' do
+  it { is_expected.to start_with('Ruby').and end_with('Rails') }
+  it { expect(fruta).to eq('banana').or eq('laranja').or eq('uva')}
+
+  def fruta
+    %w(banana laranja uva).sample
+  end
+end
+```
+- Helper de Módulo:
+    - Adicione `require_relative '../helpers/helper'` no início do arquivo `exemplo_rspec_tdd/spec/spec_helper.rb` e adicione `config.include Helper` dentro de `RSpec.configure do |config|`. Exemplo:
+    ```rb
+    require_relative '../helpers/helper'
+
+    RSpec.configure do |config|
+
+      # Helper Methods de Módulo
+      config.include Helper
+    
+      # code ...
+    end
+
+    ```
