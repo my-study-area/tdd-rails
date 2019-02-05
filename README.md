@@ -95,3 +95,10 @@ end
   it { expect([1,5,9]).to all((be_odd).and (be_an(Integer))) }
   it { expect(['ruby', 'rails']).to all(be_a(String).and include('r')) }
 ```
+## 29. Matcher be_within
+```rb
+describe 'be_within' do
+  it { expect(12.5).to be_within(0.5).of(12) }
+  it { expect([12.5,12.1,12.4]).to all (be_within(0.5).of(12)) }
+end
+```
