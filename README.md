@@ -135,5 +135,35 @@ end
     
       # code ...
     end
-
     ```
+## Hooks (before e after)
+Arquivo `exemplo_rspec_tdd/spec/spec_helper.rb`:
+```rb
+  config.before(:suite) do
+    puts ">>>>>>>>>> ANTES de TODA a suíte de testes"
+  end
+
+  config.after(:suite) do
+    puts ">>>>>>>>>> DEPOIS de TODA a suíte de testes"
+  end
+
+  config.before(:context) do
+    puts ">>>>>>>>>> ANTES de TODOS os testes"
+  end
+
+  config.after(:all) do
+    puts ">>>>>>>>>> DEPOIS de TODOS os testes"
+  end
+```
+Dentro dos testes:
+```rb
+  before(:each) do
+    puts "ANTES"
+    @pessoa = Pessoa.new
+  end
+
+  after(:each) do
+   @pessoa.nome = "Sem nome!"
+   puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
+  end
+```

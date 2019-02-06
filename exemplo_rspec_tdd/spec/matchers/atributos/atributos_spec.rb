@@ -1,6 +1,25 @@
 require 'pessoa'
 
 describe 'Atributos' do
+
+  before(:context) do
+     puts ">>>>>>>>>> ANTES de TODOS os testes"
+   end
+
+   after(:all) do
+     puts ">>>>>>>>>> DEPOIS de TODOS os testes"
+   end
+
+  # before(:each) do
+  #   puts "ANTES"
+  #   @pessoa = Pessoa.new
+  # end
+
+  # after(:each) do
+  #  @pessoa.nome = "Sem nome!"
+  #  puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
+  # end
+
   it 'have_attributes' do
     pessoa = Pessoa.new
     pessoa.nome = "Adriano"
