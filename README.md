@@ -167,3 +167,15 @@ Dentro dos testes:
    puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
   end
 ```
+## Hooks (around)
+```rb
+  around(:each) do |teste|
+   puts "ANTES"
+   @pessoa = Pessoa.new
+
+   teste.run # roda o teste
+
+   @pessoa.nome = "Sem nome!"
+   puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
+  end
+```

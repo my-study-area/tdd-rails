@@ -14,11 +14,21 @@ describe 'Atributos' do
   #   puts "ANTES"
   #   @pessoa = Pessoa.new
   # end
-
+  #
   # after(:each) do
   #  @pessoa.nome = "Sem nome!"
   #  puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
   # end
+
+  around(:each) do |teste|
+   puts "ANTES"
+   @pessoa = Pessoa.new
+
+   teste.run # roda o teste
+
+   @pessoa.nome = "Sem nome!"
+   puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
+  end
 
   it 'have_attributes' do
     pessoa = Pessoa.new
