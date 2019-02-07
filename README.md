@@ -136,7 +136,7 @@ end
       # code ...
     end
     ```
-## Hooks (before e after)
+## 32. Hooks (before e after)
 Arquivo `exemplo_rspec_tdd/spec/spec_helper.rb`:
 ```rb
   config.before(:suite) do
@@ -167,7 +167,7 @@ Dentro dos testes:
    puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
   end
 ```
-## Hooks (around)
+## 33. Hooks (around)
 ```rb
   around(:each) do |teste|
    puts "ANTES"
@@ -178,4 +178,45 @@ Dentro dos testes:
    @pessoa.nome = "Sem nome!"
    puts "DEPOIS >>>>>>> #{@pessoa.inspect}"
   end
+```
+## 34. Helper Methods (let e let!)
+`let`: a variável é carregada apenas
+quando ela é utilizada pela primeira vez
+no teste e fica na cache até o teste em
+questão terminar.
+```rb
+$counter = 0
+
+describe 'let' do
+  let(:count) { $counter += 1 }
+
+  it 'memoriza o valor' do
+    expect(count).to eq(1)
+    expect(count).to eq(1)
+  end
+
+  it 'não é cacheado entre os testes' do
+    expect(count).to eq(2)
+  end
+end
+```
+`let!`: forçar a invocação do método/helper antes de cada teste
+```rb
+$count = 0
+
+describe 'let!' do
+  ordem_de_invocacao = []
+
+  let!(:contador) do
+    ordem_de_invocacao << :let!
+    $count += 1
+  end
+
+  it 'chama o método helper antes do teste' do
+    ordem_de_invocacao << :exemplo
+    expect(ordem_de_invocacao).to eq([:let!, :exemplo])
+    expect(contador).to eq(1)
+  end
+end
+
 ```
