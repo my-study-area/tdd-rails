@@ -218,5 +218,11 @@ describe 'let!' do
     expect(contador).to eq(1)
   end
 end
+```
 
+## 35. Matcher change
+```rb
+it { expect { Contador.incrementa }.to change {Contador.qtd} }
+it { expect { Contador.incrementa }.to change  {Contador.qtd}.by(1) }
+it { expect { Contador.incrementa }.to change  {Contador.qtd}.from(2).to(3) }
 ```
