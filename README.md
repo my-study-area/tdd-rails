@@ -251,3 +251,46 @@ end
 
 ```
 No exemplo acima ele se comporta da forma negativado `include`.
+
+## 38. Agregando Falhas 
+Por padrão os testes dentro it que possuem diversas expects param ao encontrar a primeira falha no expect. É nesses casos que podemos agregar as falhas, mostrando as demais expects com erro, caso possuam.
+- Agregando falhas em bloco:
+```rb
+it 'be_between inclusive' do
+  aggregate_failures do
+    expect(5).to be_between(2,7).inclusive
+    expect(2).to be_between(2,7).inclusive
+    expect(7).to be_between(2,7).inclusive
+  end
+end
+```
+- Agregando falhas dentro do `it`:
+```rb
+it 'be_between inclusive / Falhas agregadas', :aggregate_failures do
+  expect(5).to be_between(2,7).inclusive
+  expect(1).to be_between(2,7).inclusive
+  expect(8).to be_between(2,7).inclusive
+end
+```
+- ou na forma antiga:
+```rb
+it 'be_between inclusive / Falhas agregadas', aggregate_failures: true do
+  expect(5).to be_between(2,7).inclusive
+  expect(1).to be_between(2,7).inclusive
+  expect(8).to be_between(2,7).inclusive
+end
+```
+- dentro do spec_helper:
+```rb
+#requires
+
+RSpec.configure do |config|
+
+  config.define_derived_metadata do |meta|
+    meta[:aggregate_failures] = true
+  end
+  
+  #codes
+
+end
+```
