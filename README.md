@@ -236,3 +236,18 @@ it { expect { warn "adriano" }.to output.to_stderr }
 it { expect { warn "adriano" }.to output("adriano\n").to_stderr }
 it { expect { warn "adriano" }.to output(/adriano/).to_stderr }
 ```
+## 37. Negativando Matchers
+- Adicione `RSpec::Matchers.define_negated_matcher :<novo>, :<velho>` no início do arquivo e acrescente o teste abaixo:
+```rb
+RSpec::Matchers.define_negated_matcher :exclude, :include
+
+describe Array.new([1,2,3]), "Array" do
+  it '#include' do
+    expect(subject).to include(2)
+    expect(subject).to include(2,1)
+  end
+  it { expect(subject).to exclude(4)}
+end
+
+```
+No exemplo acima ele se comporta da forma negativado `include`.
