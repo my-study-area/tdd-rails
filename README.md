@@ -289,8 +289,61 @@ RSpec.configure do |config|
   config.define_derived_metadata do |meta|
     meta[:aggregate_failures] = true
   end
-  
   #codes
 
+end
+```
+## 39. Shared Examples
+- classe `pessoa.rb`
+```rb
+class Pessoa
+  attr_reader :status
+
+  def feliz!
+    @status = "Sentindo-se Feliz!"
+  end
+
+  def triste!
+    @status = "Sentindo-se Triste!"
+  end
+
+  def contente!
+    @status = "Sentindo-se Contente!"
+  end
+end
+
+```
+- `shared_example`:
+```rb
+require 'pessoa'
+
+shared_examples 'status' do |sentimento|
+  it "#{sentimento}" do
+    pessoa.send("#{sentimento}!")
+    expect(pessoa.status).to eq("Sentindo-se #{sentimento.capitalize}!")
+  end
+end
+
+describe 'Pessoa' do
+  subject(:pessoa) { Pessoa.new }
+
+  include_examples 'status', :feliz
+  it_behaves_like 'status', :triste
+  it_should_behave_like 'status', :contente
+
+  # it 'feliz!' do
+  #   pessoa.feliz!
+  #   expect(pessoa.status).to eq('Sentindo-se Feliz!')
+  # end
+  #
+  # it 'triste!' do
+  #   pessoa.triste!
+  #   expect(pessoa.status).to eq('Sentindo-se Triste!')
+  # end
+  #
+  # it 'contente!' do
+  #   pessoa.contente!
+  #   expect(pessoa.status).to eq('Sentindo-se Contente!')
+  # end
 end
 ```
