@@ -347,3 +347,51 @@ describe 'Pessoa' do
   # end
 end
 ```
+## 40. Customizando Matchers
+- define um matcher customizado:
+```rb
+RSpec::Matchers.define :be_a_multiple_of do |expected|
+  match do |actual|
+    actual % expected == 0
+  end
+end
+```
+- define a mesagem de erro de matcher customizado:
+```rb
+  failure_message do |actual|
+    "expected that #{actual} would be a multiple of #{expected}"
+  end
+```
+- define a mesagem de sucesso do matcher customizado:
+```rb
+description do
+  "be a multiple of #{expected}"
+end
+```
+Exemplo completo com teste:
+```rb
+RSpec::Matchers.define :be_a_multiple_of do |expected|
+  # expected == 3
+  # actual == subject == 18
+
+  #custom matcher
+  match do |actual|
+    actual % expected == 0
+  end
+
+  #custom failure message
+  failure_message do |actual|
+    "expected that #{actual} would be a multiple of #{expected}"
+  end
+
+  #custom success message
+  description do
+    "be a multiple of #{expected}"
+  end
+end
+
+#test
+describe 18, 'Custom Matcher' do
+  it { is_expected.to be_a_multiple_of(3)}
+end
+```
