@@ -395,3 +395,47 @@ describe 18, 'Custom Matcher' do
   it { is_expected.to be_a_multiple_of(3)}
 end
 ```
+## 41. Tag Filter
+São usados para filtar alguns tipos de testes, como por exemplo collections, arrays e etc.    
+Podemos colocar tag nos testes das seguintes formas:
+- `tagname: true`:
+```rb
+describe 'all', collection: true do
+  it { expect([1,7,9]).to all( (be_odd).and be_an(Integer) )}
+end
+```
+Para testar executamos: `rspec . -t collection: true`
+
+- `type: tagname`
+```rb
+describe 'all',  type: 'collection' do
+  it { expect([1,5,9]).to all((be_odd).and (be_an(Integer))) }
+end
+```
+Para testar executamos: `rspec . -t type:collection`
+- ou com symbols:
+```rb
+describe 'all', :collection do
+  it { expect([1,5,9]).to all((be_odd).and (be_an(Integer))) }
+end
+```
+Para testar executamos: `rspec . -t collection`
+
+Também podemos negar alguns testes. Exemplo:
+```rb
+it '#include' do
+  expect(subject).to include(2)
+  expect(subject).to include(2,1)
+end
+it '#contain_exactly', :slow do
+  expect(subject).to contain_exactly(3,1,2)
+end
+```
+Para testar executamos: `rspec . -t collection -t ~slow`
+
+E caso seja necessário pode-se acrescentar no arquivo `.rspec`:
+```rb
+--tag type:collection
+--tag ~slow
+```
+
