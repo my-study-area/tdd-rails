@@ -508,3 +508,18 @@ it 'Erros' do
   expect{ student.bar }.to raise_error(RuntimeError)
 end
 ```
+## 45. Mock
+```rb
+ describe 'Mocks' do
+  it '#bar' do
+    # setup
+    student = Student.new
+
+     # verify
+    expect(student).to receive(:bar)
+
+     # exercise
+    student.bar
+  end
+end
+```
