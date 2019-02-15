@@ -523,3 +523,29 @@ end
   end
 end
 ```
+## 46. Mock Expectation
+- mock com restrição de argumento
+```rb
+it 'args' do
+  student = Student.new
+  expect(student).to receive(:foo).with(123)
+  student.foo(123)
+end
+```
+- mock com contagem de chamadas
+```rb
+it 'repetição' do
+  student = Student.new
+  expect(student).to receive(:foo).with(123).twice
+  student.foo(123)
+  student.foo(123)
+end
+```
+- mock com valor de retorno
+```rb
+it 'retorno' do
+  student = Student.new
+  expect(student).to receive(:foo).with(123).and_return(true)
+  puts student.foo(true)
+end
+```
