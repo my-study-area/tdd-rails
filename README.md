@@ -560,3 +560,45 @@ it 'as_null_object' do
   user.abc
 end
 ```
+## 48. Configurando Rspec no Rails
+- `rails _5.1.4_ new test_app -T`: cria um projeto rails. A opção `-T` não cria a pasta padrão de testes do Rails
+- adicione no arquivo `Gemfile`, dento do bloco `group :development, :test` o seguinte conteúdo:
+  ```rb
+  gem 'rspec-rails', '~> 3.6'
+  ```
+- execute `bundle install`
+- verifique a configuração do arquivo `config/database.yml`
+- crie os bancos de dados com `rails db:create:all`
+- instale o rspce no projeto: `rails generate rspec install`
+- adicione no final do seu arquivo **.rspec**: `--format documentation`
+- instale o binário do `rspec`:
+  - adicione no arquivo `Gemfile`, em `group :development` o seguinte:
+    ```rb
+    gem 'spring-commands-rspec'
+    ```
+  - instale as dependências: `bundle install`
+  - execute: 
+    ```rb
+    bundle exec spring binstub rspec
+    bundle exec spring binstub --all
+    ```
+  - para testar execute:
+      ```sh
+    bundle exec rspec
+    bin/rspec
+    ```
+- configure o generator do rails para criar os testes do rspec adicionando o seguinte no arquivo `config/application.rb`, abaixo de `config.generators.system_tests = nil`:
+  ```rb
+      config.generators do |g|
+        g.test_framework :rspec,
+          fixtures: false,
+          view_specs: false,
+          helper_specs: false,
+          routing_specs: false
+      end
+  ```
+  - adicione a no arquivo `Gemfile`, dentro do grupo de test e developement o seguinte:
+  ```sh
+    gem 'capybara'
+  ```
+  - atualize as dependências: `bundle install`
