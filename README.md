@@ -631,7 +631,7 @@ end
 ## 50. Conhecendo o FactoryGirl(FactoryBot)
 - adicione nas dependências do grupo development e test:
   ```rb
-  gem "factory_bot_rails", "~> 4.0"
+  gem "factory_bot_rails"
   ```
 - adicione em `spec/rails_helper.rb`:
   ```rb
@@ -643,4 +643,27 @@ end
     customer = create(:customer)
     expect(customer.full_name).to eq("Sr. Jackson Pires")
   end
+  ```
+## 51. Gem Faker
+- adicione nas dependências do grupo development e test:
+  ```rb
+  gem "fake"
+  ```
+- altere o arquivo `spec/factories/customer.rb`:
+  ```rb
+  FactoryBot.define do
+    factory :customer do
+      name {Faker::Name.name}
+      email {Faker::Internet.email}
+    end
+  end
+  ```
+- exemplo de teste:
+  ```rb
+  it 'Create a Customer with FactoryBot' do
+    customer = create(:customer)
+    expect(customer.full_name).to start_with("Sr.")
+  end
+
+  it { expect{create(:customer)}.to change{Customer.all.size}.by(1) }
   ```
