@@ -602,3 +602,29 @@ end
     gem 'capybara'
   ```
   - atualize as dependências: `bundle install`
+# Factory Girl/Bot e VCR
+## 49. Começando com fixtures
+- crie o arquivo `test_app/spec/fixtures/customers.yml`:
+```rb
+jackson:
+  name: Jackson Pires
+  email: jackson@pires.com.br
+
+jose:
+  name: José da Silva
+  email: jose@jose.com
+```
+- exemplo de uso:
+```rb
+require 'rails_helper'
+
+RSpec.describe Customer, type: :model do
+  fixtures :all
+  it 'Create a Customer' do
+    customer = customers(:jackson)
+    expect(customer.full_name).to eq("Sr. Jackson Pires")
+
+  end
+end
+
+```
