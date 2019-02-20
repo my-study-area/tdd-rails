@@ -604,7 +604,7 @@ end
   - atualize as dependências: `bundle install`
 # Factory Girl/Bot e VCR
 ## 49. Começando com fixtures
-- crie o arquivo `test_app/spec/fixtures/customers.yml`:
+- crie o arquivo `spec/fixtures/customers.yml`:
 ```rb
 jackson:
   name: Jackson Pires
@@ -628,3 +628,19 @@ RSpec.describe Customer, type: :model do
 end
 
 ```
+## 50. Conhecendo o FactoryGirl(FactoryBot)
+- adicione nas dependências do grupo development e test:
+  ```rb
+  gem "factory_bot_rails", "~> 4.0"
+  ```
+- adicione em `spec/rails_helper.rb`:
+  ```rb
+  include FactoryBot::Syntax::Methods
+  ```
+- exemplo de uso:
+  ```rb
+  it 'Create a Customer with FactoryBot' do
+    customer = create(:customer)
+    expect(customer.full_name).to eq("Sr. Jackson Pires")
+  end
+  ```
