@@ -667,3 +667,28 @@ end
 
   it { expect{create(:customer)}.to change{Customer.all.size}.by(1) }
   ```
+## 52. Sobrescrevendo atributos e Aliases para fábricas
+- exemplo de sobrescrita de atributo:
+  ```rb
+  it 'Overwrites attributes with FactoryBot' do
+    customer = create(:customer, name: 'Jackson Pires')
+    expect(customer.full_name).to eq("Sr. Jackson Pires")
+  end
+  ```
+- alias para fábrica:
+  - altere o arquivo `spec/factories/customer.rb`:
+    ```rb
+    FactoryBot.define do
+      factory :customer, aliases: [:user] do
+        name {Faker::Name.name}
+        email {Faker::Internet.email}
+      end
+    end
+    ```
+  - exemplo de uso:
+    ```rb
+    it 'FactoryBot with alias' do
+      customer = create(:user)
+      expect(customer.full_name).to start_with("Sr.")
+    end
+    ```
