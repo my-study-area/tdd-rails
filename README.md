@@ -692,3 +692,36 @@ end
       expect(customer.full_name).to start_with("Sr.")
     end
     ```
+## 53. Herança
+- exemplo de fábrica usando herança:
+```rb
+FactoryBot.define do
+  factory :customer, aliases: [:user] do
+    name {Faker::Name.name}
+    email {Faker::Internet.email}
+
+    factory :customer_vip do
+      vip {true}
+      days_to_pay {30}
+    end
+
+    factory :customer_default do
+      vip {false}
+      days_to_pay {15}
+    end
+  end
+end
+```
+- exemplo de uso:
+```rb
+  it 'Herança com customer_vip' do
+    customer = create(:customer_vip)
+    expect(customer.vip).to eq(true)
+  end
+
+  it 'Herança com customer_default' do
+    customer = create(:customer_default)
+    expect(customer.vip).to eq(false)
+  end
+```
+
