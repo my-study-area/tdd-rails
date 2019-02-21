@@ -49,4 +49,10 @@ RSpec.describe Customer, type: :model do
     customer = Customer.create(attrs)
     expect(customer.full_name).to start_with("Sr.")
   end
+
+  it 'Atributo transitório' do
+    customer = create(:customer_default, upcased: true)
+    
+    expect(customer.name.upcase).to eq(customer.name)
+  end
 end
