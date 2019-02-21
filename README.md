@@ -724,4 +724,20 @@ end
     expect(customer.vip).to eq(false)
   end
 ```
+## 54. Attributes For
+```rb
+  it 'usando attributes_for' do
+    attrs = attributes_for(:customer)
+    attrs1 = attributes_for(:customer_vip)
+    attrs2 = attributes_for(:customer_default)
+    puts attrs
+    puts attrs1
+    puts attrs2
+  end
 
+  it 'usando attributes_for 2' do
+    attrs = attributes_for(:customer)
+    customer = Customer.create(attrs)
+    expect(customer.full_name).to start_with("Sr.")
+  end
+```
