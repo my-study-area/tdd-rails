@@ -838,3 +838,5 @@ end
   expect(customer.vip).to eq(true)
 end 
 ```
+## 57. Callbacks
+- [link da documentação falando sobre callbacks](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#callbacks)
