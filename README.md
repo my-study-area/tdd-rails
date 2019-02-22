@@ -842,3 +842,6 @@ end
 - [link da documentação falando sobre callbacks](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#callbacks)
 ## 58. Atributos dinâmicos
 - [https://github.com/jacksonpires/rails-tdd/commit/5fea6f18db3979385875c87ae07524100be3ad20](https://github.com/jacksonpires/rails-tdd/commit/5fea6f18db3979385875c87ae07524100be3ad20)
+## 59. Sequences
+- [documentação sobre sequences](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#sequences)
+- [exemplo de uso de sequences](https://github.com/jacksonpires/rails-tdd/commit/f376c427c218f6ea39dadfc2a269826c80600f47)
