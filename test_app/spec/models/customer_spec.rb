@@ -52,7 +52,22 @@ RSpec.describe Customer, type: :model do
 
   it 'Atributo transitório' do
     customer = create(:customer_default, upcased: true)
-    
     expect(customer.name.upcase).to eq(customer.name)
+  end
+
+  it 'Cliente Feminino' do
+    customer = create(:customer_female)
+    expect(customer.gender).to eq('F')
+  end
+
+   it 'Cliente Feminino Default' do
+    customer = create(:customer_female_default)
+    expect(customer.gender).to eq('F')
+  end
+
+   it 'Cliente Masculino Vip' do
+    customer = create(:customer_male_vip)
+    expect(customer.gender).to eq('M')
+    expect(customer.vip).to eq(true)
   end
 end
