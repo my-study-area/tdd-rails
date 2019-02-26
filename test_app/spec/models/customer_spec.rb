@@ -9,6 +9,9 @@ RSpec.describe Customer, type: :model do
 
   it 'Overwrites attributes with FactoryBot' do
     customer = create(:customer, name: 'Jackson Pires')
+    customer1 = create(:customer, name: "Jackson Pires" )
+    puts customer.email
+    puts customer1.email
     expect(customer.full_name).to eq("Sr. Jackson Pires")
   end
 
