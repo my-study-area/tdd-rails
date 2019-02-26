@@ -845,3 +845,32 @@ end
 ## 59. Sequences
 - [documentação sobre sequences](https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#sequences)
 - [exemplo de uso de sequences](https://github.com/jacksonpires/rails-tdd/commit/f376c427c218f6ea39dadfc2a269826c80600f47)
+
+## 60. Associações (belong_to)
+- arquivo de factory:
+```rb
+FactoryBot.define do
+  factory :order do
+    sequence(:description) { |n| "Pedio número - #{n}"}
+    customer #form one
+    # association :customer, factory: :customer #form two
+  end
+end
+```
+- arquivo de teste:
+```rb
+require 'rails_helper'
+
+RSpec.describe Order, type: :model do
+  it 'Tem 1 pedido' do
+    order = create(:order)
+    expect(order.customer).to be_kind_of(Customer)
+  end
+
+  it 'Tem 1 pedido com sobrescrita' do
+    customer = create(:customer)
+    order = create(:order, customer: customer)
+    expect(order.customer).to be_kind_of(Customer)
+  end
+end
+```
