@@ -901,3 +901,12 @@ end
 - attributes_for_list
 - build_stubbed
 - build_stubbed_list
+## 64. FactoryBot Lint
+- exibe os erros de forma mais clara. Por exemplo quando adicoinamos uma coluna chamada address como obrigatório e não mudamos os testes
+- adicione o seguinte dento do arquivo `spec/spec_helper.rb`:
+```rb
+#FactoryBot Lint
+config.before(:suite) do
+  FactoryBot.lint
+end
+```
