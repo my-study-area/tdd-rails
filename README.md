@@ -889,3 +889,15 @@ end
 ```
 ## 62. Associações (has_many)
 - exemplo: [https://github.com/jacksonpires/rails-tdd/commit/d11bbdfd9dd2f86f242bf438c943bea1082da099](https://github.com/jacksonpires/rails-tdd/commit/d11bbdfd9dd2f86f242bf438c943bea1082da099)
+## 63. Métodos extras
+- create_pair:
+```rb
+it 'Tem 2 pedidos usando create_pair' do
+  orders = create_pair(:order)
+  expect(orders.count).to eq(2)
+end
+```
+- build_pair
+- attributes_for_list
+- build_stubbed
+- build_stubbed_list

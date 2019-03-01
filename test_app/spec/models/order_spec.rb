@@ -32,4 +32,9 @@ RSpec.describe Order, type: :model do
     customer = create(:customer, :with_orders, qtt_orders: 5)
     expect(customer.orders.count).to eq(5)
   end
+
+  it 'Tem 2 pedidos usando create_pair' do
+    orders = create_pair(:order)
+    expect(orders.count).to eq(2)
+  end
 end
