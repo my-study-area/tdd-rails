@@ -887,3 +887,5 @@ it 'Tem 3 pedidos usando sobrescrita de atributos' do
   expect(orders.count).to eq(3)
 end
 ```
+## 62. Associações (has_many)
+- exemplo: [https://github.com/jacksonpires/rails-tdd/commit/d11bbdfd9dd2f86f242bf438c943bea1082da099](https://github.com/jacksonpires/rails-tdd/commit/d11bbdfd9dd2f86f242bf438c943bea1082da099)

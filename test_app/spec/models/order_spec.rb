@@ -22,4 +22,14 @@ RSpec.describe Order, type: :model do
     p orders
     expect(orders.count).to eq(3)
   end
+
+  it 'has_many' do
+    customer = create(:customer, :with_orders)
+    expect(customer.orders.count).to eq(3)
+  end
+
+  it 'has_many com sobrescrita' do
+    customer = create(:customer, :with_orders, qtt_orders: 5)
+    expect(customer.orders.count).to eq(5)
+  end
 end
