@@ -910,3 +910,16 @@ config.before(:suite) do
   FactoryBot.lint
 end
 ```
+## 65. HTTParty
+- [httparty](https://github.com/jnunemaker/httparty)
+- [api para teste](https://jsonplaceholder.typicode.com/)
+- adicione a gem no grupo desenvolvimento e teste: `  gem 'httparty'`
+```rb
+describe 'HTTParty' do
+  it 'HTTParty' do
+    response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/2')
+    content_type = response.headers['content-type']
+    expect(content_type).to match(/application\/json/)
+  end
+end
+```
