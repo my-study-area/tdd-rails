@@ -980,3 +980,15 @@ end
 ```
 - [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/7ee47d9c7a71bff05e172f501ac49bf2ffd9587d)
 
+## 69. VCR (filtrando dados sensíveis)
+- adicone na configuração do VCR em `spec/spec_helper.rb
+`: ***config.filter_sensitive_data('<API-URL>') { 'https://jsonplaceholder.typicode.com' }***
+- exemplo completo:
+```rb
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data('<API-URL>') { 'https://jsonplaceholder.typicode.com' }
+end
+```
