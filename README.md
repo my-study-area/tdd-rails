@@ -923,3 +923,18 @@ describe 'HTTParty' do
   end
 end
 ```
+## 66. Webmock
+- adicione no Gemfile: ` gem 'webmock'`
+- adicione no `spec/spec_helper.rb`: `require 'webmock/rspec'`
+- exemplo de uso:
+```rb
+it 'content-type' do
+  stub_request(:get, "https://jsonplaceholder.typicode.com/posts/2").
+        to_return(status: 200, body: "", headers: { 'content-type': 'application/json'})
+
+  response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/2')
+  content_type = response.headers['content-type']
+  expect(content_type).to match(/application\/json/)
+end
+```
+- [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/ecc3db8f59ce4f9e59a8140d7d3f534d1e6b8b12)
