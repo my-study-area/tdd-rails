@@ -958,3 +958,25 @@ end
   end
 ```
 - [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/675787a579dfea2923a38718ed01d7662972338e)
+## 68. VCR com metadados RSpec
+- atualize a configuração do VCR no `spec/spec_helper.rb` como o exemplo abaixo:
+```rb
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+end
+```
+- exemplo de teste:
+```rb
+it 'content-type', vcr: { cassette_name: 'jsonplaceholder/posts'} do
+  #stub_request(:get, "https://jsonplaceholder.typicode.com/posts/2").
+  #     to_return(status: 200, body: "", headers: { 'content-type': 'application/json'})
+
+  response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/2')
+  content_type = response.headers['content-type']
+  expect(content_type).to match(/application\/json/)
+end
+```
+- [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/7ee47d9c7a71bff05e172f501ac49bf2ffd9587d)
+
