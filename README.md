@@ -938,3 +938,23 @@ it 'content-type' do
 end
 ```
 - [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/ecc3db8f59ce4f9e59a8140d7d3f534d1e6b8b12)
+## 67. VCR
+- adicione a gem: `gem 'vcr'`
+- adicione no `spec/spec_helper.rb`:
+```rb
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+end
+```
+- exemplo de uso no teste:
+```rb
+  it 'content-type' do
+    VCR.use_cassette("jsonplaceholder/posts") do
+      response = HTTParty.get('https://jsonplaceholder.typicode.com/posts/2')
+      content_type = response.headers['content-type']
+      expect(content_type).to match(/application\/json/)
+    end
+  end
+```
+- [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/675787a579dfea2923a38718ed01d7662972338e)
