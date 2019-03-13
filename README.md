@@ -1013,3 +1013,26 @@ end
     expect(content_type).to match(/application\/json/)	    expect(content_type).to match(/application\/json/)
   end
 ```
+## 72. Time Helpers
+- adicione no seu arquivo ***spec/models/customer_spec.rb***: 
+```rb
+# ... code
+RSpec.configure do |config|
+
+  # Time Helper
+  config.include ActiveSupport::Testing::TimeHelpers
+end
+# ... code
+```
+- exemplo de teste:
+```rb
+
+   it 'travel_to' do
+    travel_to Time.zone.local(2004, 11, 23, 01, 04, 44) do
+      @customer = create(:customer_vip)
+    end
+
+     expect(@customer.created_at).to be < Time.now
+  end
+```
+- [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/a2526890925ed69fec6be84201f4e4f7ed86aa6c)
