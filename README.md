@@ -1004,3 +1004,12 @@ end
     expect(content_type).to match(/application\/json/)
   end
 ```
+## 71. Modos de gravação do VCR
+- exemplo de VCR criando um novo cassete para cada lateração de URI:
+```rb
+  it 'content-type', vcr: { cassette_name: 'jsonplaceholder/posts', :record => :new_episodes } do
+     response = HTTParty.get("https://jsonplaceholder.typicode.com/posts/#{[1,2,3,4,5].sample}")	    response = HTTParty.get("https://jsonplaceholder.typicode.com/posts/3")
+    content_type = response.headers['content-type']	    content_type = response.headers['content-type']
+    expect(content_type).to match(/application\/json/)	    expect(content_type).to match(/application\/json/)
+  end
+```
