@@ -1036,3 +1036,23 @@ end
   end
 ```
 - [commit com as alterações](https://github.com/jacksonpires/rails-tdd/commit/a2526890925ed69fec6be84201f4e4f7ed86aa6c)
+## 73. Rodando testes em ordem aleatória
+- via comando com rspec: `bin/rspec --order random`
+- adicionando no arquivo __.rspec__: `--order random` e executando com `bin/rpec`
+- configurando no __spec_helper__:
+  - adicione no arquivo __spec/spec_helper.rb__: `config.order = "random"`. 
+  - exemplo de uso:
+  ```rb
+  # ... code before
+  RSpec.configure do |config|
+
+    config.order = "random"
+
+    #FactoryBot Lint
+    config.before(:suite) do
+      FactoryBot.lint
+    end
+  # ... code after  
+  end
+  ```
+  - executar na mesma sequência ,que por exemplo, ocorreu um erro: `bin/rspec --seed <number>`
