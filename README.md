@@ -1056,3 +1056,8 @@ end
   end
   ```
   - executar na mesma sequência ,que por exemplo, ocorreu um erro: `bin/rspec --seed <number>`
+## 74. Testando Models
+- `rails g model Category description:string`
+- `rails g model Product description:string
+price:decimal category:references`
+- para gerar specs de model: `rails g rspec:model product`
