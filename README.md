@@ -1061,3 +1061,45 @@ end
 - `rails g model Product description:string
 price:decimal category:references`
 - para gerar specs de model: `rails g rspec:model product`
+## 75. Testando Models (parte 2)
+- exemplo de classe:
+```rb
+class Product < ApplicationRecord
+  belongs_to :category
+  validates :description, :price, :category, presence: true
+
+  def full_description
+    "#{self.description} - #{self.price}"
+  end
+end
+```
+- exemplo de testes:
+```rb
+it 'is valid with description, price and category' do
+  product = create(:product)
+  expect(product).to be_valid
+end
+
+  it 'is invalid without description' do
+  product = build(:product, description: nil)
+  product.valid?
+  expect(product.errors[:description]).to include("can't be blank")
+end
+
+  it 'is invalid without price' do
+  product = build(:product, price: nil)
+  product.valid?
+  expect(product.errors[:price]).to include("can't be blank")
+end
+
+  it 'is invalid without category' do
+  product = build(:product, category: nil)
+  product.valid?
+  expect(product.errors[:category]).to include("can't be blank")
+end
+
+  it 'return a product with a full description' do
+  product = create(:product)
+  expect(product.full_description).to eq("#{product.description} - #{product.price}")
+end
+```
