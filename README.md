@@ -1103,3 +1103,22 @@ end
   expect(product.full_description).to eq("#{product.description} - #{product.price}")
 end
 ```
+## 76. Conhecendo o shoulda-matchers
+- adicione a gem no group test: `gem 'shoulda-matchers'`
+- adicione a configuração em __spec/rails_helper.rb__:
+```rb
+# Shoulda Matchers
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+```
+- exemplos de teste:
+```rb
+it { is_expected.to validate_presence_of(:description) }
+it { is_expected.to validate_presence_of(:price) }
+it { is_expected.to validate_presence_of(:category) }
+it { is_expected.to belong_to(:category) }
+```
