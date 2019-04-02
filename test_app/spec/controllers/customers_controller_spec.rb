@@ -6,7 +6,7 @@ RSpec.describe CustomersController, type: :controller do
     expect(response).to be_success
   end
 
-   it 'reponds a 200 reponse' do
+  it 'reponds a 200 reponse' do
     get :index
     expect(response).to have_http_status(200)
   end

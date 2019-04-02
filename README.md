@@ -1140,3 +1140,36 @@ require 'rails_helper'
   end
 end
 ```
+## 78. Devise
+- adicione no arquivo Gemfile: `gem 'devise'`
+- gere a instalação do devise:
+```sh
+rails generate devise:install
+```
+- adicione no seu arquivo **config/environments/development.rb**:
+```rb
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+```
+- crie um model:
+```sh
+rails generate devise <model-name>
+```
+- gere as alterações no banco de dados:
+```sh
+rails db:migrate
+```
+- adicione no seu controller para exigir autenticação:
+```rb
+before_action :authenticate_user!
+```
+- adicione a factory para os teste:
+```rb
+FactoryBot.define do
+  factory :member do
+    email { Faker::Internet.email }
+    password {'123456'}
+    password_confirmation {'123456'}
+  end
+end
+```
+
