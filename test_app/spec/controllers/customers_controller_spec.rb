@@ -22,24 +22,30 @@ RSpec.describe CustomersController, type: :controller do
   end
 
   describe 'as Logged Member' do
+    before(:each) do
+      @member = create(:member)
+      @customer = create(:customer)
+    end
+
+
     it 'responds a 200 response' do
-      member = create(:member)
-      customer = create(:customer)
-
-      sign_in member
-
-      get :show, params: { id: customer.id }
+      sign_in @member
+      get :show, params: { id: @customer.id }
       expect(response).to have_http_status(200)
     end
 
     it 'render a :show template' do
-      member = create(:member)
-      customer = create(:customer)
-
-      sign_in member
-
-      get :show, params: { id: customer.id }
+      sign_in @member
+      get :show, params: { id: @customer.id }
       expect(response).to render_template(:show)
+    end
+    
+    it 'with valid attributes' do
+      sign_in @member
+      customer_params = attributes_for(:customer)
+      expect {
+        post :create, params: { customer: customer_params }
+      }.to change(Customer, :count).by(1)
     end
   end
 end

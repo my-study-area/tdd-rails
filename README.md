@@ -1225,5 +1225,14 @@ RSpec.describe CustomersController, type: :controller do
   end
 end
 ```
-
+## 80. Testando Controllers (entradas do usuário)
+```rb
+it 'with valid attributes' do
+  sign_in @member
+  customer_params = attributes_for(:customer)
+  expect {
+    post :create, params: { customer: customer_params }
+  }.to change(Customer, :count).by(1)
+end
+```
 
