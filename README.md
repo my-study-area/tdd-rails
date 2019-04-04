@@ -1235,4 +1235,12 @@ it 'with valid attributes' do
   }.to change(Customer, :count).by(1)
 end
 ```
-
+## 81. Flash Notices
+```rb
+it 'Flash Notice' do
+  customer_params = attributes_for(:customer)
+  sign_in @member
+  post :create, params: { customer: customer_params }
+  expect(flash[:notice]).to match(/successfully created/)
+end
+```

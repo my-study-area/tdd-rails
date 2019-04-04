@@ -27,6 +27,12 @@ RSpec.describe CustomersController, type: :controller do
       @customer = create(:customer)
     end
 
+     it 'Flash Notice' do
+      customer_params = attributes_for(:customer)
+      sign_in @member
+      post :create, params: { customer: customer_params }
+      expect(flash[:notice]).to match(/successfully created/)
+    end
 
     it 'responds a 200 response' do
       sign_in @member
@@ -39,7 +45,7 @@ RSpec.describe CustomersController, type: :controller do
       get :show, params: { id: @customer.id }
       expect(response).to render_template(:show)
     end
-    
+
     it 'with valid attributes' do
       sign_in @member
       customer_params = attributes_for(:customer)
