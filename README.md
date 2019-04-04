@@ -1244,3 +1244,12 @@ it 'Flash Notice' do
   expect(flash[:notice]).to match(/successfully created/)
 end
 ```
+## 82.Content-Type
+```rb
+it 'Content-Type JSON' do
+  customer_params = attributes_for(:customer)
+  sign_in @member
+  post :create, format: :json, params: { customer: customer_params }
+  expect(response.content_type).to eq('application/json')
+end
+```
