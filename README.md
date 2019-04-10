@@ -1253,3 +1253,21 @@ it 'Content-Type JSON' do
   expect(response.content_type).to eq('application/json')
 end
 ```
+## 83. Shoulda Matchers
+- exemplo com atributos inválidos:
+```rb
+it 'with invalid attributes' do
+  customer_params = attributes_for(:customer, address: nil)
+  sign_in @member
+  expect{
+    post :create, params: { customer: customer_params }
+  }.not_to change(Customer, :count)
+end
+```
+- [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
+- Exemplo:
+```rb
+it 'Route' do
+  is_expected.to route(:get, '/customers').to(action: :index)
+end
+```
