@@ -1271,3 +1271,21 @@ it 'Route' do
   is_expected.to route(:get, '/customers').to(action: :index)
 end
 ```
+## 84. Testando views
+- [http://teamcapybara.github.io/capybara/](http://teamcapybara.github.io/capybara/)
+- [https://github.com/teamcapybara/capybara](https://github.com/teamcapybara/capybara)
+- `rails generate rspec:feature customers`
+- exemplo de teste:
+```rb
+  it 'Visit index page' do
+    visit(customers_path)
+    expect(page).to have_current_path(customers_path)
+  end
+```
+- Debugging:
+```rb
+print page.html
+save_and_open_page
+page.save_screenshot('screenshot.png')
+save_and_open_screenshot
+```
