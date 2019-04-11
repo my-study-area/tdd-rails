@@ -1289,3 +1289,54 @@ save_and_open_page
 page.save_screenshot('screenshot.png')
 save_and_open_screenshot
 ```
+## 85. Configurando o Screeshot
+- confugre o teste conforme o exemplo abaixo:
+```rb
+RSpec.feature "Customers", type: :feature, js: true do
+  # .. code
+end
+```
+- instale o chromium-chromedriver
+```sh
+#linux
+apt-get install chromium-chromedriver
+```
+- adicione as gems:
+```rb
+  gem 'selenium-webdriver'
+  #gem 'chromedriver-helper'  #somente no vagrant
+```
+- instale as dependências:
+```rb
+bundle install
+```
+- adicione no arquivo ***spec_helper.rb***:
+```rb
+# Capybara Chrome Headless
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new app, browser: :chrome,
+    options: Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
+end
+
+Capybara.javascript_driver = :chrome
+```
+- atualize a configuração do VCR no ***spec_helper.rb***:
+```rb
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/vcr/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data('<API-URL>') { 'https://jsonplaceholder.typicode.com' }
+  config.ignore_localhost = true
+end
+```
+- adicione o teste:
+```rb
+RSpec.feature "Customers", type: :feature, js: true do
+    it 'Visit index page' do
+      visit(customers_path)
+      page.save_screenshot('screenshot.png')
+      expect(page).to have_current_path(customers_path)
+    end
+end
+```
