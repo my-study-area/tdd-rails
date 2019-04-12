@@ -1363,3 +1363,5 @@ it 'Creates a Customer' do
     expect(page).to have_content('Customer was successfully created.')
 end
 ```
+## 87. XPath
+- utilize o Dev Tools e clique com o botão direito no elemento HTML na aba **Elements** e selecione a opção `Copy > Copy XPath`
