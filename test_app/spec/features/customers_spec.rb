@@ -20,4 +20,10 @@ RSpec.feature "Customers", type: :feature, js:true do
 
     expect(page).to have_content('Customer was successfully created.')
   end
+
+  it 'Ajax' do
+    visit(customers_path)
+    click_link('Add Message')
+    expect(page).to have_content('Yes!')
+  end
 end

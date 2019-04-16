@@ -1365,3 +1365,32 @@ end
 ```
 ## 87. XPath
 - utilize o Dev Tools e clique com o botão direito no elemento HTML na aba **Elements** e selecione a opção `Copy > Copy XPath`
+## 88. Ajax
+- configure a o capybara para aguardar 5 segundos até o carregamento da view. Adicione a seguinte linha no seu **spec/spec_helper.rb**:
+```rb
+Capybara.default_max_wait_time = 5
+```
+- configure sua view para aguardar 3 segundos e simular o carregamento mais lento. Adicione o seguinte no seu arquivo **app/views/customers/index.html.erb**:
+```rb
+<br/>
+<a href="#" id="my-link">Add Message</a>
+<div id="my-div"></div>
+
+ <script>
+  var $link = document.querySelector("#my-link");
+   $link.addEventListener('click', function(e){
+    e.preventDefault();
+    setTimeout(function(){
+      document.querySelector("#my-div").innerHTML = "<h1>Yes!<h1>";
+    }, 3000);
+  }, false)
+</script>
+```
+- exemplo de teste:
+```rb
+it 'Ajax' do
+  visit(customers_path)
+  click_link('Add Message')
+  expect(page).to have_content('Yes!')
+end
+```
