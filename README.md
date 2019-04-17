@@ -1403,3 +1403,6 @@ it 'Find' do
   expect(find('#my-div').find('h1')).to have_content('Yes!')
 end
 ```
+## 90. Dicas de matchers do Capybara
+- [https://www.rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers](https://www.rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers)
+- [https://gist.github.com/tomas-stefano/6652111](https://gist.github.com/tomas-stefano/6652111)
