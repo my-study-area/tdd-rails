@@ -1406,3 +1406,48 @@ end
 ## 90. Dicas de matchers do Capybara
 - [https://www.rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers](https://www.rubydoc.info/github/jnicklas/capybara/Capybara/RSpecMatchers)
 - [https://gist.github.com/tomas-stefano/6652111](https://gist.github.com/tomas-stefano/6652111)
+## 91. Page Object Pattern
+- crie o arquivo **spec/support/new_customer_form.rb**:
+```rb
+class NewCustomerForm
+  include Capybara::DSL  # Capybara
+  include FactoryBot::Syntax::Methods  # FactoryBot
+  include Warden::Test::Helpers  # Devise
+  include Rails.application.routes.url_helpers  # Routes
+
+   def login
+    member = create(:member)
+    login_as(member, :scope => :member)
+    self
+  end
+
+   def visit_page
+    visit(new_customer_path)
+    self
+  end
+
+   def fill_in_with(params = {})
+    fill_in('Name', with: params.fetch(:name, Faker::Name.name))
+    fill_in('Email', with: params.fetch(:email, Faker::Internet.email))
+    fill_in('Address', with: params.fetch(:address, Faker::Address.street_address))
+    self
+  end
+
+   def submit
+    click_button('Create Customer')
+  end
+end
+```
+- exemplo de teste:
+```rb
+  it 'Creates a Customer - Page Object Pattern' do
+      new_customer_form = NewCustomerForm.new
+      new_customer_form.login.visit_page.fill_in_with(
+      name: 'Faker::Name.name',
+      email: 'Faker::Internet.email',
+      address: 'Faker:Address.street_address'
+    ).submit()
+
+    expect(page).to have_content('Customer was successfully created.')
+  end
+```
