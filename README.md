@@ -1451,3 +1451,13 @@ end
     expect(page).to have_content('Customer was successfully created.')
   end
 ```
+## 92. Testando APIs
+- crie os testes de request:
+```sh
+rails g rspec:request customers
+```
+- adicione a seguinte gem no Gemfile:
+```rb
+gem 'rspec-json_expectations'
+```
+
