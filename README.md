@@ -1487,3 +1487,26 @@ it "show - JSON 200 OK" do
   )
 end
 ```
+## 94. RSpec Matchers para include_json
+- exemplos de testes com valores genéricos:
+```rb
+it "index - JSON 200 OK" do
+  get "/customers.json"
+  expect(response).to have_http_status(200)
+  expect(response.body).to include_json([
+    id: /\d/,
+    name: (be_kind_of String),
+    email: (be_kind_of String),
+  ])
+end
+
+it "show - JSON 200 OK" do
+  get "/customers/1.json"
+  expect(response).to have_http_status(200)
+  expect(response.body).to include_json(
+    id: /\d/,
+    name: (be_kind_of String),
+    email: (be_kind_of String)
+  )
+end
+```
