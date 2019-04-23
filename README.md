@@ -1548,7 +1548,7 @@ it 'update - JSON' do
   )
 end
 ```
-## Delete - JSON
+## 97. Delete - JSON
 - exemplo de teste com delete
 ```rb
 it 'destroy - JSON' do
@@ -1561,5 +1561,16 @@ it 'destroy - JSON' do
 
   expect { delete "/customers/#{customers.id}.json", params: { customer: customers.attributes }, headers: headers }.to change(Customer, :count).by(-1)
   expect(response).to have_http_status(204)
+end
+```
+## 98. Rspec puro + JSON
+- exemplo de uso:
+```rb
+it "show - Rspec puro + JSON" do
+  get "/customers/1.json"
+  response_body = JSON.parse(response.body)
+  expect(response_body.fetch("id")).to eq(1)
+  expect(response_body.fetch("name")).to be_kind_of(String)
+  expect(response_body.fetch("email")).to be_kind_of(String)
 end
 ```
