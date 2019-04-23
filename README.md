@@ -1574,3 +1574,5 @@ it "show - Rspec puro + JSON" do
   expect(response_body.fetch("email")).to be_kind_of(String)
 end
 ```
+## 99. JSON Schema
+- [json schema](https://json-schema.org/)
