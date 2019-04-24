@@ -1576,3 +1576,31 @@ end
 ```
 ## 99. JSON Schema
 - [json schema](https://json-schema.org/)
+
+## 100. JSON Schema Matchers
+- adicione no arquivo **Gemfile**:
+```rb
+gem 'json_matchers'
+```
+- adicione no arquivo **spec/spec_helper.rb**:
+```rb
+require "json_matchers/rspec"
+```
+- adicione o arquivo **spec/support/api/schemas/customer.json** com seguinte conteúdo:
+```rb
+{
+  "type": "object",
+  "properties": {
+    "customer" : {
+      "required" : ["id", "name", "email"],
+      "properties" : {
+        "id" : { "type" : "integer" },
+        "email" : { "type" : "string" },
+        "name" : { "type" : "string" },
+        "created_at" : { "type" : "string", "format": "date-time" },
+        "updated_at" : { "type" : "string", "format": "date-time" }
+      }
+    }
+  }
+}
+```

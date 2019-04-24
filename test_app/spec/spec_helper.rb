@@ -1,12 +1,15 @@
 #Gem webmock
 require 'webmock/rspec'
 
+# JSON Schema
+require "json_matchers/rspec"
+
 VCR.configure do |config|
   config.cassette_library_dir = "spec/vcr/vcr_cassettes"
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data('<API-URL>') { 'https://jsonplaceholder.typicode.com' }
-  
+
   config.ignore_localhost = true
 end
 
