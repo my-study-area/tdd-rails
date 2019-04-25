@@ -1604,3 +1604,43 @@ require "json_matchers/rspec"
   }
 }
 ```
+## 101. Usando TDD
+- crie o projeto:
+```sh
+rails _5.2.2_ new tdd_app -T
+```
+- adicione as gems em development/test:
+```rb
+gem 'rspec-rails', '~> 3.6'
+gem 'capybara'
+```
+- adicione a gem em development:
+```rb
+gem 'spring-commands-rspec'
+```
+- instale o rspec:
+```rb
+rails g rspec:install
+```
+- adicione a configuração no arquivo **.rspec**:
+```rb
+--format documentation
+```
+- crie os bancos de dados:
+```rb
+rails db:create:all
+```
+- gere o binstub:
+```rb
+bundle exec spring binstub rspec
+```
+- adicione em config/application.rb:
+```rb
+config.generators do |g|
+  g.test_framework :rspec,
+    fixtures: false,
+    view_specs: false,
+    helper_specs: false,
+    routing_specs: false
+end 
+```
