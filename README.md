@@ -1644,3 +1644,36 @@ config.generators do |g|
     routing_specs: false
 end 
 ```
+## 102. Feature Spec
+- crie a feature:
+```sh
+rails g rspec:feature welcome
+```
+- adicione o conteúdo do teste no arquivo **spec/features/welcome_spec.rb**:
+```rb
+require 'rails_helper'
+
+feature "Welcome", type: :feature do
+  scenarion 'Mostra a mensagem de Bem-Vindo' do
+    visit('/')
+    expect(page).to have_content('Bem-Vindo')
+  end
+end
+```
+- adicione a rota:
+```rb
+root to: 'welcome#index'
+```
+- adicione o controller:
+```rb
+class WelcomeController < ApplicationController
+  def index
+
+  end
+end
+```
+- adicone na view **app/view/welcome/index.html.erb**:
+```rb
+<h1>Seja Bem-Vindo!!!</h1>
+```
+
