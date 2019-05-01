@@ -1684,3 +1684,6 @@ end
 
 ## 106. Cadastra cliente (Parte 2)
 - [https://github.com/jacksonpires/rails-tdd/commit/71c70b9ef3599a3b121ee2e875d887c253afb3b5](https://github.com/jacksonpires/rails-tdd/commit/71c70b9ef3599a3b121ee2e875d887c253afb3b5)
+
+## 107. i18n - Considerações
+- [https://github.com/jacksonpires/rails-tdd/commit/351dddff839b915d9c133527a74a74ddb8c1864a](https://github.com/jacksonpires/rails-tdd/commit/351dddff839b915d9c133527a74a74ddb8c1864a)
