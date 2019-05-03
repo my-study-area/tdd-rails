@@ -1687,3 +1687,6 @@ end
 
 ## 107. i18n - Considerações
 - [https://github.com/jacksonpires/rails-tdd/commit/351dddff839b915d9c133527a74a74ddb8c1864a](https://github.com/jacksonpires/rails-tdd/commit/351dddff839b915d9c133527a74a74ddb8c1864a)
+
+# 108. Happy Path vs Sad Path
+- [https://github.com/jacksonpires/rails-tdd/commit/beda092e2493c144bbf91c40a8ce230f1a7f2d2e](https://github.com/jacksonpires/rails-tdd/commit/beda092e2493c144bbf91c40a8ce230f1a7f2d2e)
