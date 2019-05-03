@@ -1690,3 +1690,6 @@ end
 
 # 108. Happy Path vs Sad Path
 - [https://github.com/jacksonpires/rails-tdd/commit/beda092e2493c144bbf91c40a8ce230f1a7f2d2e](https://github.com/jacksonpires/rails-tdd/commit/beda092e2493c144bbf91c40a8ce230f1a7f2d2e)
+
+## 109. Mostrando um Cliente
+- [https://github.com/jacksonpires/rails-tdd/commit/cc8b826300e1cb94e8151bb2211f6b08252bfde3](https://github.com/jacksonpires/rails-tdd/commit/cc8b826300e1cb94e8151bb2211f6b08252bfde3)
