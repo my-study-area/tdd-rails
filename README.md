@@ -1696,3 +1696,6 @@ end
 
 ## 110. Testando a Index
 - [https://github.com/jacksonpires/rails-tdd/commit/c8c6deab30bc84365c18d0a1a97e1e6c18d35b44](https://github.com/jacksonpires/rails-tdd/commit/c8c6deab30bc84365c18d0a1a97e1e6c18d35b44)
+
+## 111. Atualizando um Cliente
+- [https://github.com/jacksonpires/rails-tdd/commit/7fbb35717c22f55454e3fce7265b329cc331cef9](https://github.com/jacksonpires/rails-tdd/commit/7fbb35717c22f55454e3fce7265b329cc331cef9)

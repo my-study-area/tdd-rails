@@ -75,4 +75,21 @@ feature "Customers", type: :feature do
     expect(page).to have_content(customer1.name)
     expect(page).to have_content(customer2.name)
   end
+
+  scenario 'Atualizando um cliente' do
+    customer = Customer.create!(
+     name: Faker::Name.name,
+     email: Faker::Internet.email,
+     phone: Faker::PhoneNumber.phone_number,
+     smoker: ['S','N'].sample,
+     avatar: "#{Rails.root}/spec/fixtures/avatar.png"
+    )
+
+    new_name = Faker::Name.name
+    visit(edit_customer_path(customer))
+    fill_in('Nome', with: new_name)
+    click_on('Atualizar Cliente')
+
+    expect(page).to have_content('Cliente Atualizado com sucesso!')
+  end
 end
