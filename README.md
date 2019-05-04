@@ -1693,3 +1693,6 @@ end
 
 ## 109. Mostrando um Cliente
 - [https://github.com/jacksonpires/rails-tdd/commit/cc8b826300e1cb94e8151bb2211f6b08252bfde3](https://github.com/jacksonpires/rails-tdd/commit/cc8b826300e1cb94e8151bb2211f6b08252bfde3)
+
+## 110. Testando a Index
+- [https://github.com/jacksonpires/rails-tdd/commit/c8c6deab30bc84365c18d0a1a97e1e6c18d35b44](https://github.com/jacksonpires/rails-tdd/commit/c8c6deab30bc84365c18d0a1a97e1e6c18d35b44)

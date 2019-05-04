@@ -2,4 +2,9 @@
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
+<ul>
+  <% @customers.each do |customer|  %>
+    <li><%= customer.name %></li>
+  <% end %>
+</ul>
 <%= link_to 'Novo Cliente', new_customer_path %>
