@@ -1699,3 +1699,6 @@ end
 
 ## 111. Atualizando um Cliente
 - [https://github.com/jacksonpires/rails-tdd/commit/7fbb35717c22f55454e3fce7265b329cc331cef9](https://github.com/jacksonpires/rails-tdd/commit/7fbb35717c22f55454e3fce7265b329cc331cef9)
+
+## 112. Criando e Testando os links (mostrar, editar)
+- [https://github.com/jacksonpires/rails-tdd/commit/83b7fd8c69562c34f9d3a0a0e264fce376df9c0e](https://github.com/jacksonpires/rails-tdd/commit/83b7fd8c69562c34f9d3a0a0e264fce376df9c0e)

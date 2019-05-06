@@ -2,9 +2,22 @@
 <% if flash[:notice] %>
   <p><%= flash[:notice] %></p>
 <% end %>
-<ul>
-  <% @customers.each do |customer|  %>
-    <li><%= customer.name %></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer|  %>
+    <tr>
+      <td><%= customer.name %></td>
+      <td><%= link_to 'Mostar', customer_path(customer) %></td>
+      <td><%= link_to 'Editar', edit_customer_path(customer) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= link_to 'Novo Cliente', new_customer_path %>
