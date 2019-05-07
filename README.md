@@ -1705,3 +1705,6 @@ end
 
 ## 113. Apagando um cliente
 - [https://github.com/jacksonpires/rails-tdd/commit/4fb8631b6a043fa48b0114b625fa47f0a0f1ebb5](https://github.com/jacksonpires/rails-tdd/commit/4fb8631b6a043fa48b0114b625fa47f0a0f1ebb5)
+
+## 114. Refatorando
+- [https://github.com/jacksonpires/rails-tdd/commit/96270b009896984259c7d2ff2b4aacb2192ea5f0](https://github.com/jacksonpires/rails-tdd/commit/96270b009896984259c7d2ff2b4aacb2192ea5f0)
