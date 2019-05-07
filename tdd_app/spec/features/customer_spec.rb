@@ -120,4 +120,22 @@ feature "Customers", type: :feature do
     find(:xpath, "/html/body/table/tbody/tr[1]/td[3]/a").click
     expect(page).to have_content('Editando Cliente')
   end
+
+  scenario 'Apaga um cliente' do
+    customer = Customer.create!(
+     name: Faker::Name.name,
+     email: Faker::Internet.email,
+     phone: Faker::PhoneNumber.phone_number,
+     smoker: ['S','N'].sample,
+     avatar: "#{Rails.root}/spec/fixtures/avatar.png"
+    )
+
+    visit(customers_path)
+    find(:xpath, "/html/body/table/tbody/tr[1]/td[4]/a").click
+    3.second
+    byebug
+    expect(page).to have_content('Cliente excluído com sucesso!')
+  end
+
+
 end

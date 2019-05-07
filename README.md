@@ -1702,3 +1702,6 @@ end
 
 ## 112. Criando e Testando os links (mostrar, editar)
 - [https://github.com/jacksonpires/rails-tdd/commit/83b7fd8c69562c34f9d3a0a0e264fce376df9c0e](https://github.com/jacksonpires/rails-tdd/commit/83b7fd8c69562c34f9d3a0a0e264fce376df9c0e)
+
+## 113. Apagando um cliente
+- [https://github.com/jacksonpires/rails-tdd/commit/4fb8631b6a043fa48b0114b625fa47f0a0f1ebb5](https://github.com/jacksonpires/rails-tdd/commit/4fb8631b6a043fa48b0114b625fa47f0a0f1ebb5)
